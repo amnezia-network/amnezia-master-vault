@@ -1,6 +1,6 @@
-AMNEZIA MASTER VAULT — MVP (Minimum Viable Protocol)
+AMNEZIA™ MASTER VAULT — MVP (Minimum Viable Protocol)
 
-Amnezia Master Vault es un sistema minimalista de identidad, trazabilidad y firma criptográfica para obras musicales, pensado como base para escalar a un futuro framework de tokenización y smart contracts.
+Amnezia™ Master Vault es un sistema minimalista de identidad, trazabilidad y firma criptográfica para obras musicales, pensado como base para escalar a un futuro framework de tokenización y smart contracts.
 
 El MVP actual funciona 100% local, sin depender de blockchain, para mantenerlo simple, auditable y entendible.
 El sistema ya implementa la capa fundamental: creación del asset → generación del SyncToken → firma → verificación.
