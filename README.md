@@ -1,96 +1,39 @@
-# amnezia-master-vault
-Amnezia Master Vault
+AMNEZIA MASTER VAULT — MVP (Minimum Viable Protocol)
 
-Seguridad real. Control total. Tu obra, para siempre.
+Amnezia Master Vault es un sistema minimalista de identidad, trazabilidad y firma criptográfica para obras musicales, pensado como base para escalar a un futuro framework de tokenización y smart contracts.
 
-🧩 One-liner técnico
+El MVP actual funciona 100% local, sin depender de blockchain, para mantenerlo simple, auditable y entendible.
+El sistema ya implementa la capa fundamental: creación del asset → generación del SyncToken → firma → verificación.
 
-Amnezia Master Vault crea un registro inmutable de cada obra y gestiona automáticamente la propiedad y los splits usando firmas digitales verificables.
+🔹 Componentes del sistema
 
-❗ Problem Statement
+vault-cli.js
+Interfaz CLI donde el artista puede:
 
-Los artistas no tienen una forma segura, simple e inmutable de demostrar autoría ni de gestionar splits sin depender de terceros.
-Eso genera disputas, pérdidas de ingresos y cero transparencia.
+Crear tokens (uno por obra)
 
-💡 Solution Statement
+Firmarlos con su clave privada
 
-Amnezia Master Vault permite registrar cualquier obra en un sistema inmutable y verificable.
-El ownership queda firmado digitalmente, los splits se fijan desde el inicio y nadie puede alterarlos ni discutirlos.
+Verificar firmas con la clave pública
 
-🔑 Key Features
+Ver historial de cambios
 
-Registro inmutable de autoría
-Hash único + firma digital para cada obra.
+createsynctoken.js
+Genera SyncTokens compatibles con futuras integraciones blockchain.
+Serialización estable → el archivo que se firma es EXACTAMENTE el que se verifica.
 
-Ownership y splits automáticos
-Porcentajes definidos al inicio, sin disputas posteriores.
+verifysync.js / verify.js
+Scripts externos que permiten verificar un token sin usar el Vault, para mostrar portabilidad y confianza.
 
-Verificación pública sin exponer la obra
-Cualquiera valida existencia y propiedad sin acceder al archivo real.
+Estructura del token (.synctoken.json)
 
-🏗 Arquitectura Simplificada
+token_id
 
-Firma y hash de la obra
-El usuario sube un archivo → se genera SHA-256 → se firma digitalmente.
+vault_version
 
-Registro inmutable (ledger)
-Se almacena hash + timestamp + ownership + splits en un storage append-only.
+hash de assets
 
-Verificación instantánea
-Un QR o link permite validar existencia, autoría y splits.
+derechos
 
-🧭 User Flow
-
-Artista sube su obra.
-
-Define ownership y splits.
-
-Se genera el hash y se firma.
-
-Se registra en el ledger inmutable.
-
-Se genera un certificado verificable.
-
-Cualquiera puede validar sin exponer la obra.
-
-🚀 MVP construido en la hackathon
-
-Generación de hash (SHA-256) a partir de cualquier archivo.
-
-Firma digital simple del hash.
-
-Ledger inmutable (JSON append-only o smart contract simple en testnet).
-
-Certificado verificable (QR o link).
-
-Bonus: Verificador online de existencia + propiedad (si hay tiempo).
-
-🛠 Stack Tecnológico (sugerido)
-
-Node.js o Python.
-
-HTML + JS minimalista.
-
-Ledger en JSON append-only (o contrato básico en testnet).
-
-🗣 Pitch (2 minutos)
-
-Problema:
-Los artistas no tienen una forma segura, simple e inmutable de demostrar autoría. Dependen de terceros o capturas de pantalla. Eso genera disputas y pérdida de ingresos.
-
-Solución:
-Amnezia Master Vault registra obras con hash + firma digital y fija splits desde el inicio. Genera un certificado verificable e imposible de alterar.
-
-Cómo funciona:
-Subís tu obra → se genera un hash único y se firma → se registra en un ledger inmutable → obtenés un certificado verificable sin exponer tu archivo.
-
-MVP:
-Hash + firma + ledger + certificado QR.
-Y un verificador de existencia.
-
-Impacto:
-Elimina disputas, da transparencia a los splits y protege la autoría de forma simple y segura.
-
-📩 Contacto
-
-Proyecto Hackathon — Amnezia
+timestamp
+Esto es el equivalente a un NFT metadata, pero local y verificable antes de subir a una cadena.
